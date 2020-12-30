@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,9 +15,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 @NgModule({
-  declarations: [AppComponent, AddUserComponent, AllUsersComponent],
+  declarations: [
+    AppComponent,
+    AddUserComponent,
+    AllUsersComponent,
+    ViewUserComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +39,8 @@ import { UserEffects } from './store/effects/user.effects';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([UserEffects]),
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LocalDataSource } from 'ng2-smart-table';
 import {
   DeleteUserAction,
@@ -7,6 +8,7 @@ import {
   LoadUserAction,
 } from '../store/actions/user.actions';
 import { AppState } from '../store/models/app-state.model';
+import { ViewUserComponent } from '../view-user/view-user.component';
 
 @Component({
   selector: 'app-all-users',
@@ -33,6 +35,12 @@ export class AllUsersComponent implements OnInit {
     actions: {
       add: false,
       position: 'right',
+      custom: [
+        {
+          name: 'View',
+          title: '<a">View</a>&nbsp;',
+        },
+      ],
     },
     delete: {
       confirmDelete: true,
@@ -44,7 +52,7 @@ export class AllUsersComponent implements OnInit {
 
   source;
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.store.dispatch(new LoadUserAction());
@@ -61,5 +69,15 @@ export class AllUsersComponent implements OnInit {
   }
   editUser(event) {
     this.store.dispatch(new EditUserAction(event.newData));
+  }
+  viewUser(event) {
+    console.log(event);
+    this.dialog.open(ViewUserComponent, {
+      width: '330px',
+      height: '150px',
+      data: {
+        id: event.data.id,
+      },
+    });
   }
 }

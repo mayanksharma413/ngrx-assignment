@@ -14,6 +14,9 @@ export enum UserActionTypes {
   EDIT_USER = '[USER] Edit Users',
   EDIT_USER_SUCCESS = '[USER] Edit Users Success',
   EDIT_USER_FAILURE = '[USER] Edit Users Failure',
+  LOAD_USER = '[USER] Load User',
+  LOAD_USER_SUCCESS = '[User] Load User Success',
+  LOAD_USER_FAILURE = '[User] Load User Failure',
 }
 
 export class LoadUserAction implements Action {
@@ -86,6 +89,24 @@ export class EditUserFailureAction implements Action {
   constructor(public payload: String) {}
 }
 
+export class LoadOneUserAction implements Action {
+  readonly type = UserActionTypes.LOAD_USER;
+
+  constructor(public payload: string) {}
+}
+
+export class LoadOneUserSuccessAction implements Action {
+  readonly type = UserActionTypes.LOAD_USER_SUCCESS;
+
+  constructor(public payload: User) {}
+}
+
+export class LoadOneUserFailureAction implements Action {
+  readonly type = UserActionTypes.LOAD_USER_FAILURE;
+
+  constructor(public payload: string) {}
+}
+
 export type UserAction =
   | LoadUserAction
   | LoadUserSuccessAction
@@ -98,4 +119,7 @@ export type UserAction =
   | DeleteUserFailureAction
   | EditUserFailureAction
   | EditUserSuccessAction
-  | EditUserAction;
+  | EditUserAction
+  | LoadOneUserAction
+  | LoadOneUserSuccessAction
+  | LoadOneUserFailureAction;

@@ -23,7 +23,11 @@ export class UserService {
     return this.http.delete(`${this.URL}/${id}`);
   }
 
-  editUser(user: User){
-    return this.http.put(`${this.URL}/${user.id}`,user);
+  editUser(user: User) {
+    return this.http.put(`${this.URL}/${user.id}`, user);
+  }
+
+  getOneUser(id: string) {
+    return this.http.get(`${this.URL}/${id}`);
   }
 }

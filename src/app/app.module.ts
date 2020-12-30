@@ -11,6 +11,7 @@ import { UserReducer } from './store/reducers/user.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, AddUserComponent, AllUsersComponent],
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     Ng2SmartTableModule,
     FormsModule,
+    HttpClientModule,
     StoreModule.forRoot({
       user: UserReducer,
     }),

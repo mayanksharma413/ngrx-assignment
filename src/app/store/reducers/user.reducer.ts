@@ -1,24 +1,31 @@
 import { UserActionTypes, UserAction } from '../actions/user.actions';
 import { User } from '../models/user.model';
 
-const initialState: Array<User> = [
-  {
-    id: '1',
-    name: 'user',
-    email: 'a@b.com',
-    phone: '9876543210',
-  },
-];
+export interface usersState {
+  list: User[];
+  loading: boolean;
+  error: Error;
+}
+
+const initialState: usersState = {
+  list: [],
+  loading: false,
+  error: undefined,
+};
 
 export function UserReducer(
-  state: Array<User> = initialState,
+  state: usersState = initialState,
   action: UserAction
 ) {
   switch (action.type) {
     case UserActionTypes.ADD_USER:
-      return [...state, action.payload];
+      return [...state.list, action.payload];
     case UserActionTypes.DELETE_USER:
-      return state.filter((item) => item.id !== action.payload);
+      return {
+        ...state,
+        list: state.list.filter((item) => item.id !== action.payload),
+        loading: false,
+      };
     default:
       return state;
   }

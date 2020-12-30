@@ -1,5 +1,28 @@
 # NgrxAssignment
 
+## Approach
+
+NgRx state management gives the ability to show data in structured format.
+
+For this crud app the basic data structure is:
+
+{
+list of users,
+loading,
+errors
+}
+
+This helps in changing loaders and showing error message to the user easily.
+
+Two main components of the app are:
+
+1. Add User - Consists of form to add new user.
+2. All Users - Consiste of the table to do all the edit, read and delete operations.
+
+The components use store to manupulate data and the store uses effects to deal with http requests.
+
+The basic redux pattern is followed hence making the app easy to maintain and debug.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
 
 ## Development server

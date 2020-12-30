@@ -1,1 +1,37 @@
-<p>add-user works!</p>
+<div class="container">
+  <form class="mt-5">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        [(ngModel)]="newUser.name"
+        placeholder="Full Name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="newUser.email"
+        placeholder="name@example.com"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Phone</label>
+      <input
+        type="number"
+        class="form-control"
+        name="phone"
+        [(ngModel)]="newUser.phone"
+        placeholder="Phone number"
+      />
+    </div>
+    <button (click)="addUser()" class="btn btn-primary">Submit</button>
+  </form>
+</div>

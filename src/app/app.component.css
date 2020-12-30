@@ -1,0 +1,9 @@
+::ng-deep table {
+  color: #606c71;
+}
+
+::ng-deep table tr td,
+::ng-deep table tr th {
+  border: 1px solid #e9ebec;
+}
+/*# sourceMappingURL=app.component.css.map */

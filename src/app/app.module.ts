@@ -6,10 +6,27 @@ import { AppComponent } from './app.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AllUsersComponent } from './all-users/all-users.component';
+import { StoreModule } from '@ngrx/store';
+import { UserReducer } from './store/reducers/user.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, AddUserComponent, AllUsersComponent],
-  imports: [BrowserModule, AppRoutingModule, Ng2SmartTableModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    Ng2SmartTableModule,
+    FormsModule,
+    StoreModule.forRoot({
+      user: UserReducer,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

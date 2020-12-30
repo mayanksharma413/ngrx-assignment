@@ -1,1 +1,8 @@
-<p>all-users works!</p>
+<div class="container pt-5">
+  <ng2-smart-table
+    [settings]="settings"
+    [source]="source"
+    (deleteConfirm)="deleteUser($event)"
+  >
+  </ng2-smart-table>
+</div>

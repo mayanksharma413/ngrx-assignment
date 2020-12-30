@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngrx-assignment';
-  source = [];
-  settings = {
-    columns: {
-      id: {
-        title: 'ID',
-      },
-    },
-  };
 }

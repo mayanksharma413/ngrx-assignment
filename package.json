@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.11",
     "@ngrx/effects": "^10.1.2",
     "@ngrx/store": "^10.1.2",
+    "@ngrx/store-devtools": "^10.1.2",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "ng2-completer": "^9.0.1",

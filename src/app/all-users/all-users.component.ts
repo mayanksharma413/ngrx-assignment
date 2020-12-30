@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { LocalDataSource } from 'ng2-smart-table';
-import { DeleteUserAction } from '../store/actions/user.actions';
+import {
+  DeleteUserAction,
+  LoadUserAction,
+} from '../store/actions/user.actions';
 import { AppState } from '../store/models/app-state.model';
 
 @Component({
@@ -40,14 +43,14 @@ export class AllUsersComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
+    this.store.dispatch(new LoadUserAction());
     this.store
-      .select((store) => store.user)
+      .select((store) => store.user.list)
       .subscribe((users) => {
         this.source = new LocalDataSource(users);
       });
   }
   deleteUser(event) {
-    console.log(event);
     this.store.dispatch(new DeleteUserAction(event.data.id));
     event.confirm.resolve();
   }

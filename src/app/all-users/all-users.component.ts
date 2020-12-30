@@ -55,11 +55,9 @@ export class AllUsersComponent implements OnInit {
   constructor(private store: Store<AppState>, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.store.dispatch(new LoadUserAction());
     this.store
       .select((store) => store.user.list)
       .subscribe((users) => {
-        console.log(users);
         this.source = users;
       });
   }
@@ -71,7 +69,6 @@ export class AllUsersComponent implements OnInit {
     this.store.dispatch(new EditUserAction(event.newData));
   }
   viewUser(event) {
-    console.log(event);
     this.dialog.open(ViewUserComponent, {
       width: '330px',
       height: '150px',

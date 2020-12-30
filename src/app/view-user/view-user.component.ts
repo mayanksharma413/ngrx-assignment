@@ -19,7 +19,6 @@ export class ViewUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log(this.data);
     this.store.dispatch(new LoadOneUserAction(this.data.id));
     this.store
       .select((store) => store.user.list)

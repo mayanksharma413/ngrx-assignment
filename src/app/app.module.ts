@@ -17,7 +17,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewUserComponent } from './view-user/view-user.component';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,8 @@ import { ViewUserComponent } from './view-user/view-user.component';
     EffectsModule.forRoot([UserEffects]),
     BrowserAnimationsModule,
     MatDialogModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

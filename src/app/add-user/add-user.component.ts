@@ -28,7 +28,6 @@ export class AddUserComponent implements OnInit {
     };
   }
   addUser() {
-    console.log(this.newUser);
     this.store.dispatch(new AddUserAction(this.newUser));
     this.newUser = this.initUser();
   }

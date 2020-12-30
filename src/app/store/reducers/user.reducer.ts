@@ -44,7 +44,7 @@ export function UserReducer(
     case UserActionTypes.ADD_USER_SUCCESS:
       return {
         ...state,
-        list: [...state.list, action.payload],
+        list: [action.payload, ...state.list],
         loading: false,
       };
     case UserActionTypes.ADD_USER_FAILURE:

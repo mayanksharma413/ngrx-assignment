@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { LocalDataSource } from 'ng2-smart-table';
 import {
   DeleteUserAction,
+  EditUserAction,
   LoadUserAction,
 } from '../store/actions/user.actions';
 import { AppState } from '../store/models/app-state.model';
@@ -36,9 +37,12 @@ export class AllUsersComponent implements OnInit {
     delete: {
       confirmDelete: true,
     },
+    edit: {
+      confirmSave: true,
+    },
   };
 
-  source: LocalDataSource;
+  source;
 
   constructor(private store: Store<AppState>) {}
 
@@ -47,11 +51,15 @@ export class AllUsersComponent implements OnInit {
     this.store
       .select((store) => store.user.list)
       .subscribe((users) => {
-        this.source = new LocalDataSource(users);
+        console.log(users);
+        this.source = users;
       });
   }
   deleteUser(event) {
     this.store.dispatch(new DeleteUserAction(event.data.id));
     event.confirm.resolve();
+  }
+  editUser(event) {
+    this.store.dispatch(new EditUserAction(event.newData));
   }
 }

@@ -1,4 +1,3 @@
-import { Statement } from '@angular/compiler';
 import { UserActionTypes, UserAction } from '../actions/user.actions';
 import { User } from '../models/user.model';
 
@@ -65,6 +64,26 @@ export function UserReducer(
         loading: false,
       };
     case UserActionTypes.DELETE_USER_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
+      };
+    case UserActionTypes.EDIT_USER:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UserActionTypes.EDIT_USER_SUCCESS:
+      return {
+        ...state,
+        list: [
+          action.payload,
+          ...state.list.filter((item) => item.id != action.payload.id),
+        ],
+        loading: false,
+      };
+    case UserActionTypes.EDIT_USER_FAILURE:
       return {
         ...state,
         error: action.payload,

@@ -11,6 +11,9 @@ import {
   DeleteUserAction,
   DeleteUserFailureAction,
   DeleteUserSuccessAction,
+  EditUserAction,
+  EditUserFailureAction,
+  EditUserSuccessAction,
   LoadUserAction,
   LoadUserFailureAction,
   LoadUserSuccessAction,
@@ -48,6 +51,16 @@ export class UserEffects {
       this.userService.deleteUser(data.payload).pipe(
         map(() => new DeleteUserSuccessAction(data.payload)),
         catchError((error) => of(new DeleteUserFailureAction(error)))
+      )
+    )
+  );
+
+  @Effect() editUser$ = this.actions$.pipe(
+    ofType<EditUserAction>(UserActionTypes.EDIT_USER),
+    mergeMap((data) =>
+      this.userService.editUser(data.payload).pipe(
+        map(() => new EditUserSuccessAction(data.payload)),
+        catchError((error) => of(new EditUserFailureAction(error)))
       )
     )
   );

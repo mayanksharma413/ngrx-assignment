@@ -99,8 +99,9 @@ export function UserReducer(
       return {
         ...state,
         list: [
-          action.payload,
-          ...state.list.filter((item) => item.id != action.payload.id),
+          ...state.list.map((item) =>
+            item.id == action.payload.id ? action.payload : item
+          ),
         ],
         loading: false,
       };

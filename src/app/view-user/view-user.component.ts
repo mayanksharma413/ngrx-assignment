@@ -21,9 +21,10 @@ export class ViewUserComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(new LoadOneUserAction(this.data.id));
     this.store
-      .select((store) => store.user.list)
+      .select((store) => store.user.entities)
       .subscribe((user) => {
-        this.user = user.filter((item) => item.id == this.data.id)[0];
+        console.log(user);
+        this.user = user[this.data.id];
       });
   }
 }

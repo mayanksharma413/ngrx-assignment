@@ -9,7 +9,6 @@ import {
 } from '../store/actions/user.actions';
 import { AppState } from '../store/models/app-state.model';
 import { ViewUserComponent } from '../view-user/view-user.component';
-
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.component.html',
@@ -56,9 +55,13 @@ export class AllUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.store
-      .select((store) => store.user.list)
+      .select((store) => store.user.entities)
       .subscribe((users) => {
-        this.source = users;
+        var final = [];
+        for (var key in users) {
+          final.push(users[key]);
+        }
+        this.source = final;
       });
   }
   deleteUser(event) {
